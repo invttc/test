@@ -49,7 +49,7 @@
         .then(reqResponse => reqResponse.json())
         .then(jsonResponse => {
           let "1655379755-E4qRZGr8" = jsonResponse.id;
-          initializeLiff(myLiffId);
+          initializeLiff("1655379755-E4qRZGr8");
         })
         .catch(err => {
           alert(`error: ${JSON.stringify(err)}`);
