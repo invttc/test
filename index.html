@@ -9,102 +9,20 @@
 <body>
   <script src="https://static.line-scdn.net/liff/edge/versions/2.8.0/sdk.js"></script>
   <script>
-    async function main() {
-      await liff.init({ liffId: "1655683432-L1veXr25" })
-      const result = await liff.shareTargetPicker([
-        {
-          "type": "flex",
-          "altText": "Flex Message",
-          "contents": {
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://i.ibb.co/4jPdG4w/Profile.png",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "label": "Line",
-      "uri": "https://lin.ee/fM0qxFc"
+document.getElementById('sendMessageButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+            'type': 'text',
+            'text': "Hello, World!"
+        }]).then(function() {
+            window.alert('Message sent');
+        }).catch(function(error) {
+            window.alert('Error sending message: ' + error);
+        });
     }
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "backgroundColor": "#FFFFFFFF",
-    "contents": [
-      {
-        "type": "text",
-        "text": "Fo[u]r Wealth",
-        "weight": "bold",
-        "size": "xl",
-        "align": "center",
-        "contents": []
-      },
-      {
-        "type": "text",
-        "text": "Line@ Fo[u]r Wealth ในรูปแบบใหม่ที่ให้ข้อมูลข่าวสารหุ้นสำหรับนักลงทุนที่ต้องการความสะดวกสบาย เข้าถึงง่าย ซึ่งข้างในจะมีแผนการเทรดในแต่ละวัน ของ TFEX  และ Gold Online แหล่งความรู้มากมายที่คอยให้บริการนักลงทุนทุกท่าน เพื่อได้ติดตามข่าวสารต่างๆ ซึ่งนักลงทุนสามารถคลิกติดตามพวกเราได้เลย",
-        "wrap": true,
-        "contents": []
-      }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "flex": 0,
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "เพิ่มเป็นเพื่อน",
-          "uri": "https://lin.ee/fM0qxFc"
-        },
-        "color": "#3ADD8DFF",
-        "height": "sm",
-        "style": "secondary"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "แชร์ให้เพื่อน",
-          "uri": "https://liff.line.me/1655683432-L1veXr25"
-        },
-        "color": "#3ADD8DFF",
-        "height": "sm",
-        "style": "secondary"
-      },
-      {
-        "type": "spacer",
-        "size": "sm"
-      }
-    ]
-  }
-}
-        }
-      ])
-      
-      if (result) {
-        alert(`[${result.status}] Message sent!`)
-      } else {
-        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
-
-        if (minorVer === undefined) {
-          alert('ShareTargetPicker was canceled in external browser')
-          return
-        }
-
-        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
-          alert('ShareTargetPicker was canceled in LINE app')
-        }
-      }
-      liff.closeWindow()
-    }
-    main()
+});
   </script>
 </body>
 </html>
