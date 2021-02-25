@@ -7,22 +7,54 @@
 
 </head>
 <body>
-  <script src="https://static.line-scdn.net/liff/edge/versions/2.8.0/sdk.js"></script>
+  <button id="button">send test message</button>
+  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
-document.getElementById('sendMessageButton').addEventListener('click', function() {
-    if (!liff.isInClient()) {
-        sendAlertIfNotInClient();
-    } else {
-        liff.sendMessages([{
-            'type': 'text',
-            'text': "Hello, World!"
-        }]).then(function() {
-            window.alert('Message sent');
-        }).catch(function(error) {
-            window.alert('Error sending message: ' + error);
+    function initializeLiff(myLiffId) {
+      liff
+        .init({
+          liffId: myLiffId,
+        })
+        .then(() => {
+          setButtonHandler();
+        })
+        .catch(err => {
+          alert(`error: ${JSON.stringify(err)}`);
         });
     }
-});
+
+    function setButtonHandler() {
+      let button = document.getElementById('button');
+      button.addEventListener('click', () => {
+        window.alert('clicked: sendMessages');
+        liff
+          .sendMessages([
+            {
+              type: 'text',
+              text: 'Hello, LIFF!',
+            },
+          ])
+          .then(() => {
+            alert('message sent');
+            liff.closeWindow();
+          })
+          .catch(err => {
+            window.alert('Error sending message: ' + err);
+          });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch(`/send-id`)
+        .then(reqResponse => reqResponse.json())
+        .then(jsonResponse => {
+          let myLiffId = jsonResponse.id;
+          initializeLiff(myLiffId);
+        })
+        .catch(err => {
+          alert(`error: ${JSON.stringify(err)}`);
+        });
+    });
   </script>
 </body>
 </html>
