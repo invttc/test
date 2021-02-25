@@ -10,11 +10,8 @@
   <button id="button">send test message</button>
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   <script>
-    function initializeLiff(1655379755-E4qRZGr8) {
-      liff
-        .init({
-          liffId: 1655379755-E4qRZGr8,
-        })
+    async function() {
+      liff.init({liffId: "1655379755-E4qRZGr8"})
         .then(() => {
           setButtonHandler();
         })
@@ -33,6 +30,7 @@
             'text': "Hello, World!"
         }]).then(function() {
             window.alert('Message sent');
+          liff.closeWindow();
         }).catch(function(error) {
             window.alert('Error sending message: ' + error);
         });
