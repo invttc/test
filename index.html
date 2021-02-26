@@ -9,26 +9,10 @@
 <body>
   <button id="button" onclick="setButtonHandler()">send test message</button>
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-  <script>
-    function initializeLiff("1655379755-E4qRZGr8") {
-      liff
-        .init({
-          liffId: "1655379755-E4qRZGr8",
-        })
-        .then(() => {
-          setButtonHandler();
-        })
-        .catch(err => {
-          alert(`error: ${JSON.stringify(err)}`);
-        });
-    }
-
-    function setButtonHandler() {
-      let button = document.getElementById('button');
-      button.addEventListener('click', () => {
-        window.alert('clicked: sendMessages');
-        liff
-          .sendMessages([
+  <script>  
+    
+   async function setButtonHandler() {
+        await liff.sendMessages([
             {
               type: 'text',
               text: 'Hello, LIFF!',
@@ -41,8 +25,14 @@
           .catch(err => {
             window.alert('Error sending message: ' + err);
           });
-      });
     }
+    
+      async function main(){
+      await liff.init([ liffId: "1655379755-E4qRZGr8" ])
+      if(liff.sendMessages()){
+        document.getElementById('button').style.display = "block"
+      }
+    main()
   </script>
 </body>
 </html>
