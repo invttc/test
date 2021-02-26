@@ -23,18 +23,90 @@
 
   <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
   <script>
+        
     window.onload = function (e) {
       liff.init(function (data) {
         initializeApp(data);
       });
     };
+    
     function sendMessage(team) {
       switch (team) {
         case 'liverpool':
           msg = {
-  "type": "text",
-  "text": "Hello"
+          "type": "flex",
+          "altText": "Flex Message",
+          "contents": {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://i.ibb.co/4jPdG4w/Profile.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "label": "Line",
+      "uri": "https://lin.ee/fM0qxFc"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#FFFFFFFF",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Fo[u]r Wealth",
+        "weight": "bold",
+        "size": "xl",
+        "align": "center",
+        "contents": []
+      },
+      {
+        "type": "text",
+        "text": "Line@ Fo[u]r Wealth ในรูปแบบใหม่ที่ให้ข้อมูลข่าวสารหุ้นสำหรับนักลงทุนที่ต้องการความสะดวกสบาย เข้าถึงง่าย ซึ่งข้างในจะมีแผนการเทรดในแต่ละวัน ของ TFEX  และ Gold Online แหล่งความรู้มากมายที่คอยให้บริการนักลงทุนทุกท่าน เพื่อได้ติดตามข่าวสารต่างๆ ซึ่งนักลงทุนสามารถคลิกติดตามพวกเราได้เลย",
+        "wrap": true,
+        "contents": []
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "flex": 0,
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "เพิ่มเป็นเพื่อน",
+          "uri": "https://lin.ee/fM0qxFc"
+        },
+        "color": "#3ADD8DFF",
+        "height": "sm",
+        "style": "secondary"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "แชร์ให้เพื่อน",
+          "uri": "https://liff.line.me/1655683432-L1veXr25"
+        },
+        "color": "#3ADD8DFF",
+        "height": "sm",
+        "style": "secondary"
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ]
+  }
 }
+        }
           break;
         case 'tottenham':
           msg = {
