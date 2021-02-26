@@ -24,11 +24,20 @@
   <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
   <script>
         
-    window.onload = function (e) {
-      liff.init(function (data) {
-        initializeApp(data);
-      });
-    };
+   window.onload = function() {
+  initializeLiff("1655379755-E4qRZGr8");
+}
+
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+        })
+        .catch((err) => {
+        });
+}
     
     function sendMessage(team) {
       switch (team) {
