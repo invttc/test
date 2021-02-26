@@ -32,15 +32,17 @@
       switch (team) {
         case 'liverpool':
           msg = {
-  "type": "text",
-  "text": "Hello"
-}
+            type: 'image',
+            originalContentUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/300px-Liverpool_FC.svg.png',
+            previewImageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/300px-Liverpool_FC.svg.png'
+          }
           break;
         case 'tottenham':
           msg = {
-  "type": "text",
-  "text": "Hello"
-}
+            type: 'image',
+            originalContentUrl: 'https://tot-tmp.azureedge.net/media/2280/spurs-blue-no-text-300x300.png?anchor=center&mode=crop&width=300',
+            previewImageUrl: 'https://tot-tmp.azureedge.net/media/2280/spurs-blue-no-text-300x300.png?anchor=center&mode=crop&width=300'
+          }
           break;
       }
       liff.sendMessages([msg]).then(() => {
