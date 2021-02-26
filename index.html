@@ -21,7 +21,7 @@
     </tr>
   </table>
 
-  <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.8.0/sdk.js"></script>
   <script>
     window.onload = function (e) {
       liff.init(function (data) {
@@ -32,18 +32,15 @@
       switch (team) {
         case 'liverpool':
           msg = {
-            
-              type: 'text',
-              text: 'Hello, LIFF!',
-            
-          }
+  "type": "text",
+  "text": "Hello"
+}
           break;
         case 'tottenham':
           msg = {
-            type: 'image',
-            originalContentUrl: 'https://tot-tmp.azureedge.net/media/2280/spurs-blue-no-text-300x300.png?anchor=center&mode=crop&width=300',
-            previewImageUrl: 'https://tot-tmp.azureedge.net/media/2280/spurs-blue-no-text-300x300.png?anchor=center&mode=crop&width=300'
-          }
+  "type": "text",
+  "text": "Hello"
+}
           break;
       }
       liff.sendMessages([msg]).then(() => {
