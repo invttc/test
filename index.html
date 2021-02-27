@@ -7,20 +7,8 @@
 </head>
 
 <body>
-  <table width="100%">
-    <tr>
-      <td width="50%">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/300px-Liverpool_FC.svg.png"
-          width="100%" onclick="sendMessage('liverpool')">
-      </td>
-      <td width="50%">
-        <img
-          src="https://tot-tmp.azureedge.net/media/2280/spurs-blue-no-text-300x300.png?anchor=center&mode=crop&width=300"
-          width="100%" onclick="sendMessage('tottenham')">
-      </td>
-    </tr>
-  </table>
-
+  <button type="button"  onclick="sendMessage('AddFriend')">Send Message</button>
+ 
   <script src="https://static.line-scdn.net/liff/edge/versions/2.8.0/sdk.js"></script>
   <script>
         
@@ -41,7 +29,7 @@ function initializeLiff(myLiffId) {
     
     function sendMessage(team) {
       switch (team) {
-        case 'liverpool':
+        case 'AddFriend':
           msg = {
           "type": "flex",
           "altText": "Flex Message",
